@@ -45,21 +45,6 @@ X-RAI/
 
 ---
 
-## 🛠️ Installation
-
-1. Clone this repository:
-
-   git clone https://github.com/your-username/x-ray-fracture-detector.git
-   cd x-ray-fracture-detector
-
-2. Install dependencies:
-
-   pip install ultralytics pillow
-
-> On Jetson, make sure your CUDA drivers and environment are correctly set up.
-
----
-
 ## 🧪 How to Use
 
 🔹 Classify a Single Image
@@ -124,12 +109,6 @@ print("---------------------------------------------------")
 - [ ] Integration with DICOM viewers
 - [ ] Heatmap visualization for attention areas
 - [ ] Automated batch scanning mode
-
----
-
-## 📜 License
-
-This project is for educational and research purposes only. Always consult a licensed medical professional for diagnosis and treatment.
 
 ---
 
