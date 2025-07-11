@@ -14,25 +14,22 @@ This project is a deep learning-based medical imaging tool designed to identify 
 ---
 
 ## 🚀 Example Output
-
----------------------------------------------------
-📸 Image Path:     /home/nvidia07/X-RAI/toscan/example.jpg
-🧠 Prediction:     fractured
-📈 Confidence:     88.30%
-✅ Decision:       Fracture detected with high confidence.
----------------------------------------------------
+📸 Image Path:     /home/nvidia07/X-RAI/toscan/example.jpg   
+🧠 Prediction:     fractured   
+📈 Confidence:     88.30%   
+✅ Decision:       Fracture detected with high confidence.   
 
 ---
 
 ## 📁 Project Structure
 
-X-RAI/
-├── runs/                  # YOLO training results (model files)
-│   └── classify/train/weights/best.pt
-├── toscan/                # Drop images here to be scanned
-│   └── example.jpg
-├── main.py                # Main image analysis script
-├── README.md              # This file
+X-RAI   
+├── runs/                   
+│   └── classify/train/weights/best.pt   
+├── toscan/             
+│   └── example.jpg   
+├── main.py                   
+├── README.md              
 
 ---
 
@@ -62,43 +59,43 @@ X-RAI/
 
 ## 🔣 Sample Script
 
-from ultralytics import YOLO
-from PIL import Image
-import os
+from ultralytics import YOLO   
+from PIL import Image   
+import os   
 
-MODEL_PATH = "/home/nvidia07/X-RAI/runs/classify/train/weights/best.pt"
-TOSCAN_DIR = "/home/nvidia07/X-RAI/toscan"
-IMAGE_FILENAME = "INPUT_IMAGE_HERE.jpg"
-IMAGE_PATH = os.path.join(TOSCAN_DIR, IMAGE_FILENAME)
+MODEL_PATH = "/home/nvidia07/X-RAI/runs/classify/train/weights/best.pt"   
+TOSCAN_DIR = "/home/nvidia07/X-RAI/toscan"   
+IMAGE_FILENAME = "INPUT_IMAGE_HERE.jpg"   
+IMAGE_PATH = os.path.join(TOSCAN_DIR, IMAGE_FILENAME)   
 
-model = YOLO(MODEL_PATH)
-results = model.predict(source=IMAGE_PATH, save=False)
+model = YOLO(MODEL_PATH)   
+results = model.predict(source=IMAGE_PATH, save=False)   
 
-probs = results[0].probs
-class_names = model.names
-pred_index = probs.top1
-pred_label = class_names[pred_index]
-confidence = probs.data[pred_index].item() * 100
+probs = results[0].probs   
+class_names = model.names   
+pred_index = probs.top1   
+pred_label = class_names[pred_index]   
+confidence = probs.data[pred_index].item() * 100   
 
-def make_decision(label, conf):
-    if "fracture" in label.lower():
-        if conf >= 70:
-            return "Fracture detected with high confidence."
-        elif 50 <= conf < 70:
-            return "Possible fracture detected – refer to doctor."
-        else:
-            return "Possible fracture, but AI is unsure – refer to doctor."
-    else:
-        if conf >= 70:
-            return "No fracture detected with high confidence."
-        else:
-            return "No fracture detected, but AI is unsure – refer to doctor."
+def make_decision(label, conf):   
+    if "fracture" in label.lower():   
+        if conf >= 70:   
+            return "Fracture detected with high confidence."   
+        elif 50 <= conf < 70:   
+            return "Possible fracture detected – refer to doctor."   
+        else:   
+            return "Possible fracture, but AI is unsure – refer to doctor."   
+    else:   
+        if conf >= 70:   
+            return "No fracture detected with high confidence."   
+        else:   
+            return "No fracture detected, but AI is unsure – refer to doctor."   
 
-print("---------------------------------------------------")
-print(f"📸 Image Path:     {IMAGE_PATH}")
-print(f"🧠 Prediction:     {pred_label}")
-print(f"📈 Confidence:     {confidence:.2f}%")
-print(f"✅ Decision:       {make_decision(pred_label, confidence)}")
+print("---------------------------------------------------")   
+print(f"📸 Image Path:     {IMAGE_PATH}")   
+print(f"🧠 Prediction:     {pred_label}")   
+print(f"📈 Confidence:     {confidence:.2f}%")   
+print(f"✅ Decision:       {make_decision(pred_label, confidence)}")   
 print("---------------------------------------------------")
 
 ---
