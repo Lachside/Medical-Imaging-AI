@@ -100,6 +100,14 @@ print("---------------------------------------------------")
 
 ---
 
+🎥 Demo Video
+
+Watch a full walkthrough of the project, including how it works and what it looks like in action:
+
+👉 https://youtu.be/Z41z4IYTPj8
+
+---
+
 ## 🔄 Future Improvements
 
 - [ ] Web interface or GUI for easier use
